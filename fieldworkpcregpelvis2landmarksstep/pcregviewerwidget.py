@@ -247,7 +247,7 @@ class MayaviPCRegViewerWidget(QDialog):
     def _updateConfigRASIS(self):
         self._config['RASIS'] = self._ui.comboBoxRASIS.currentText()
 
-    def _updateConfiLPSISC(self):
+    def _updateConfigLPSIS(self):
         self._config['LPSIS'] = self._ui.comboBoxLPSIS.currentText()
 
     def _updateConfigRPSIS(self):

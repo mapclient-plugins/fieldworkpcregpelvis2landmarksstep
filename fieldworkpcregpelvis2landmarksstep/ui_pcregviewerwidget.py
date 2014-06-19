@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'pcregviewerwidget.ui'
 #
-# Created: Sun Jun  1 11:03:49 2014
-#      by: pyside-uic 0.2.14 running on PySide 1.1.2
+# Created: Thu Jun 19 13:12:27 2014
+#      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -64,27 +64,33 @@ class Ui_Dialog(object):
         self.label = QtGui.QLabel(self.widget1)
         self.label.setObjectName("label")
         self.formLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
-        self.comboBoxFHC = QtGui.QComboBox(self.widget1)
-        self.comboBoxFHC.setObjectName("comboBoxFHC")
-        self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.comboBoxFHC)
+        self.comboBoxLASIS = QtGui.QComboBox(self.widget1)
+        self.comboBoxLASIS.setObjectName("comboBoxLASIS")
+        self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.comboBoxLASIS)
         self.label_4 = QtGui.QLabel(self.widget1)
         self.label_4.setObjectName("label_4")
         self.formLayout_2.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_4)
-        self.comboBoxMEC = QtGui.QComboBox(self.widget1)
-        self.comboBoxMEC.setObjectName("comboBoxMEC")
-        self.formLayout_2.setWidget(1, QtGui.QFormLayout.FieldRole, self.comboBoxMEC)
+        self.comboBoxRASIS = QtGui.QComboBox(self.widget1)
+        self.comboBoxRASIS.setObjectName("comboBoxRASIS")
+        self.formLayout_2.setWidget(1, QtGui.QFormLayout.FieldRole, self.comboBoxRASIS)
         self.label_5 = QtGui.QLabel(self.widget1)
         self.label_5.setObjectName("label_5")
         self.formLayout_2.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_5)
-        self.comboBoxLEC = QtGui.QComboBox(self.widget1)
-        self.comboBoxLEC.setObjectName("comboBoxLEC")
-        self.formLayout_2.setWidget(2, QtGui.QFormLayout.FieldRole, self.comboBoxLEC)
+        self.comboBoxLPSIS = QtGui.QComboBox(self.widget1)
+        self.comboBoxLPSIS.setObjectName("comboBoxLPSIS")
+        self.formLayout_2.setWidget(2, QtGui.QFormLayout.FieldRole, self.comboBoxLPSIS)
         self.label_6 = QtGui.QLabel(self.widget1)
         self.label_6.setObjectName("label_6")
         self.formLayout_2.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_6)
-        self.comboBoxFGT = QtGui.QComboBox(self.widget1)
-        self.comboBoxFGT.setObjectName("comboBoxFGT")
-        self.formLayout_2.setWidget(3, QtGui.QFormLayout.FieldRole, self.comboBoxFGT)
+        self.comboBoxRPSIS = QtGui.QComboBox(self.widget1)
+        self.comboBoxRPSIS.setObjectName("comboBoxRPSIS")
+        self.formLayout_2.setWidget(3, QtGui.QFormLayout.FieldRole, self.comboBoxRPSIS)
+        self.comboBoxSacral = QtGui.QComboBox(self.widget1)
+        self.comboBoxSacral.setObjectName("comboBoxSacral")
+        self.formLayout_2.setWidget(4, QtGui.QFormLayout.FieldRole, self.comboBoxSacral)
+        self.label_7 = QtGui.QLabel(self.widget1)
+        self.label_7.setObjectName("label_7")
+        self.formLayout_2.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_7)
         self.verticalLayout.addLayout(self.formLayout_2)
         self.gridLayout_2 = QtGui.QGridLayout()
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -197,13 +203,14 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Femur Mesh PCA Landmark Registration", None, QtGui.QApplication.UnicodeUTF8))
+        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Pelvis Mesh PCA Landmark Registration", None, QtGui.QApplication.UnicodeUTF8))
         self.tableWidget.setSortingEnabled(False)
         self.tableWidget.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("Dialog", "Visible", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("Dialog", "Femoral Head Centre: ", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Dialog", "Medial Epicondyle:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_5.setText(QtGui.QApplication.translate("Dialog", "Lateral Epicondyle:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_6.setText(QtGui.QApplication.translate("Dialog", "Greater Trochanter:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("Dialog", "LASIS:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Dialog", "RASIS:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("Dialog", "LPSIS:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_6.setText(QtGui.QApplication.translate("Dialog", "RPSIS:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_7.setText(QtGui.QApplication.translate("Dialog", "Sacral:", None, QtGui.QApplication.UnicodeUTF8))
         self.regButton.setText(QtGui.QApplication.translate("Dialog", "Register", None, QtGui.QApplication.UnicodeUTF8))
         self.resetButton.setText(QtGui.QApplication.translate("Dialog", "Reset", None, QtGui.QApplication.UnicodeUTF8))
         self.acceptButton.setText(QtGui.QApplication.translate("Dialog", "Accept", None, QtGui.QApplication.UnicodeUTF8))

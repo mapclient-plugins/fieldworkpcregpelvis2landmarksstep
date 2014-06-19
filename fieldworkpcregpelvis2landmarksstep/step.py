@@ -9,8 +9,8 @@ from PySide import QtGui
 from PySide import QtCore
 
 from mountpoints.workflowstep import WorkflowStepMountPoint
-from fieldworkpcregfemur2landmarksstep.configuredialog import ConfigureDialog
-from fieldworkpcregfemur2landmarksstep.pcregviewerwidget import MayaviPCRegViewerWidget
+from fieldworkpcregpelvis2landmarksstep.configuredialog import ConfigureDialog
+from fieldworkpcregpelvis2landmarksstep.pcregviewerwidget import MayaviPCRegViewerWidget
 
 from workutils import mesh_alignment as ma
 from mappluginutils.datatypes import transformations
