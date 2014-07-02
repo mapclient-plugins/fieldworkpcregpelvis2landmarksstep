@@ -1,7 +1,7 @@
 
 
 from PySide import QtGui
-from fieldworkpcregpelvis2landmarksstep.ui_configuredialog import Ui_Dialog
+from mapclientplugins.fieldworkpcregpelvis2landmarksstep.ui_configuredialog import Ui_Dialog
 
 INVALID_STYLE_SHEET = 'background-color: rgba(239, 0, 0, 50)'
 DEFAULT_STYLE_SHEET = ''

@@ -8,11 +8,12 @@ import copy
 from PySide import QtGui
 from PySide import QtCore
 
-from mountpoints.workflowstep import WorkflowStepMountPoint
-from fieldworkpcregpelvis2landmarksstep.configuredialog import ConfigureDialog
-from fieldworkpcregpelvis2landmarksstep.pcregviewerwidget import MayaviPCRegViewerWidget
+from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
+from mapclientplugins.fieldworkpcregpelvis2landmarksstep.configuredialog import ConfigureDialog
+from mapclientplugins.fieldworkpcregpelvis2landmarksstep.pcregviewerwidget import MayaviPCRegViewerWidget
 
 from workutils import mesh_alignment as ma
+from gias.common import math
 from mappluginutils.datatypes import transformations
 import numpy as np
 
@@ -89,6 +90,19 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
     def _abort(self):
 		raise RuntimeError('Pelvis Landmark Registration Aborted')
 
+    def _correctLandmarks(self):
+        shiftDistance = 20.0 # mm
+
+        # move landmarks closer to centre in anterior-posterior direction
+        centreAnt = 0.5*(self._landmarks[self._config['LASIS']] + self._landmarks[self._config['RASIS']])
+        centrePos = self._landmarks[self._config['Sacral']]
+        centre = 0.5*(centreAnt + centrePos)
+        vPosAnt = centreAnt - centrePos
+        vPosAntn = math.norm(vPosAnt)
+        self._landmarks[self._config['LASIS']] -= shiftDistance*vPosAntn
+        self._landmarks[self._config['RASIS']] -= shiftDistance*vPosAntn
+        self._landmarks[self._config['Sacral']] += shiftDistance*vPosAntn
+
     def reg(self, callbackSignal=None):
 
         if callbackSignal is not None:
@@ -115,6 +129,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         '''
         if index==0:
             self._landmarks = dataIn # ju#landmarks
+            self._correctLandmarks()
         elif index==1:
             self._pc = dataIn
         else:
