@@ -20,3 +20,4 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 __version__ = '0.1.0'
 __author__ = 'Ju Zhang'
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep import step
+import mapclientplugins.fieldworkpcregpelvis2landmarksstep.resources_rc

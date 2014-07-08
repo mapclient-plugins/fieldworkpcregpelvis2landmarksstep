@@ -1,0 +1,6 @@
+
+<RCC>
+  <qresource prefix="fieldworkpcregpelvis2landmarksstep">
+    <file>images/fieldworkpelvispcregicon.png</file>
+  </qresource>
+</RCC>
