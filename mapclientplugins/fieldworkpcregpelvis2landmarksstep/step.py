@@ -26,6 +26,10 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
     for new steps.
     '''
 
+    _pcfitmw0 = 1e2
+    _pcfitmwn = 1e2
+    _landmarkShift = 10.0
+
     def __init__(self, location):
         super(FieldworkPCRegPelvis2LandmarksStep, self).__init__('Fieldwork PC-Reg Pelvis 2 Landmarks', location)
         self._configured = False # A step cannot be executed until it has been configured.
@@ -92,17 +96,15 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
 		raise RuntimeError('Pelvis Landmark Registration Aborted')
 
     def _correctLandmarks(self):
-        shiftDistance = 20.0 # mm
-
         # move landmarks closer to centre in anterior-posterior direction
         centreAnt = 0.5*(self._landmarks[self._config['LASIS']] + self._landmarks[self._config['RASIS']])
         centrePos = self._landmarks[self._config['Sacral']]
         centre = 0.5*(centreAnt + centrePos)
         vPosAnt = centreAnt - centrePos
         vPosAntn = math.norm(vPosAnt)
-        self._landmarks[self._config['LASIS']] -= shiftDistance*vPosAntn
-        self._landmarks[self._config['RASIS']] -= shiftDistance*vPosAntn
-        self._landmarks[self._config['Sacral']] += shiftDistance*vPosAntn
+        self._landmarks[self._config['LASIS']] -= self._landmarkShift*vPosAntn
+        self._landmarks[self._config['RASIS']] -= self._landmarkShift*vPosAntn
+        self._landmarks[self._config['Sacral']] += self._landmarkShift*vPosAntn
 
     def reg(self, callbackSignal=None):
 
@@ -112,11 +114,17 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         else:
             callback = None
 
+        self._correctLandmarks()
         inputLandmarks = [(l, self._landmarks[self._config[l]]) for l in PELVISLANDMARKS if self._config[l]!='none']
         
         self._outputModel,\
         alignmentSSE,\
-        T = ma.alignPelvisLandmarksPC(self._inputModel, self._pc, inputLandmarks, GFParamsCallback=callback)
+        T = ma.alignPelvisLandmarksPC(self._inputModel,
+                                      self._pc,
+                                      inputLandmarks,
+                                      GFParamsCallback=callback,
+                                      mw0=self._pcfitmw0,
+                                      mwn=self._pcfitmwn)
 
         self._rmse = np.sqrt(alignmentSSE[2]/len(inputLandmarks))
         self._transform = transformations.RigidPCModesTransform(T)
@@ -130,7 +138,6 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         '''
         if index==0:
             self._landmarks = dataIn # ju#landmarks
-            self._correctLandmarks()
         elif index==1:
             self._pc = dataIn
         else:
