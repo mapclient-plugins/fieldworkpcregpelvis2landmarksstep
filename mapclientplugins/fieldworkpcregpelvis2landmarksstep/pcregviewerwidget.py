@@ -55,7 +55,7 @@ class MayaviPCRegViewerWidget(QDialog):
     '''
     defaultColor = colours['bone']
     objectTableHeaderColumns = {'Visible':0}
-    backgroundColour = (1.0,1.0,1.0)
+    backgroundColour = (0.0,0.0,0.0)
     _modelRenderArgs = {}
     _modelDisc = [10,10]
     _landmarkRenderArgs = {'mode':'sphere', 'scale_factor':20.0, 'color':(0,1,0)}
