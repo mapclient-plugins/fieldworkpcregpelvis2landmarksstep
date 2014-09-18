@@ -12,7 +12,7 @@ from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep.configuredialog import ConfigureDialog
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep.pcregviewerwidget import MayaviPCRegViewerWidget
 
-from workutils import mesh_alignment as ma
+from gias.musculoskeletal import model_alignment as ma
 from gias.common import math
 from mappluginutils.datatypes import transformations
 import numpy as np
