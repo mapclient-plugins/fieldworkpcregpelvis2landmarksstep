@@ -39,7 +39,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         # Ports:
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
-                      'ju#landmarks'))
+                      'python#dict'))
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
                       'ju#principalcomponents'))
@@ -54,7 +54,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
                       'ju#geometrictransform'))
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
-                      'float'))
+                      'python#float'))
 
         self._config = {}
         self._config['identifier'] = ''
