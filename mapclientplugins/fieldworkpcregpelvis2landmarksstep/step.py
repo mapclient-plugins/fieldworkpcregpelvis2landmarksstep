@@ -3,10 +3,10 @@
 MAP Client Plugin Step
 '''
 import os
+import json
 import copy
 
 from PySide import QtGui
-from PySide import QtCore
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep.configuredialog import ConfigureDialog
@@ -58,7 +58,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
 
         self._config = {}
         self._config['identifier'] = ''
-        self._config['GUI'] = 'True'
+        self._config['GUI'] = True
         for l in PELVISLANDMARKS:
             self._config[l] = 'none'
 
@@ -188,45 +188,25 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         '''
         self._config['identifier'] = identifier
 
-    def serialize(self, location):
+    def serialize(self):
         '''
-        Add code to serialize this step to disk.  The filename should
-        use the step identifier (received from getIdentifier()) to keep it
-        unique within the workflow.  The suggested name for the file on
-        disk is:
-            filename = getIdentifier() + '.conf'
+        Add code to serialize this step to disk. Returns a json string for
+        mapclient to serialise.
         '''
-        configuration_file = os.path.join(location, self.getIdentifier() + '.conf')
-        conf = QtCore.QSettings(configuration_file, QtCore.QSettings.IniFormat)
-        conf.beginGroup('config')
-        conf.setValue('identifier', self._config['identifier'])
-        for l in PELVISLANDMARKS:
-            conf.setValue(l, self._config[l])
-        if self._config['GUI']:
-            conf.setValue('GUI', 'True')
-        else:
-            conf.setValue('GUI', 'False')
-        conf.endGroup()
+        return json.dumps(self._config, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
-    def deserialize(self, location):
+    def deserialize(self, string):
         '''
-        Add code to deserialize this step from disk.  As with the serialize 
-        method the filename should use the step identifier.  Obviously the 
-        filename used here should be the same as the one used by the
-        serialize method.
+        Add code to deserialize this step from disk. Parses a json string
+        given by mapclient
         '''
-        configuration_file = os.path.join(location, self.getIdentifier() + '.conf')
-        conf = QtCore.QSettings(configuration_file, QtCore.QSettings.IniFormat)
-        conf.beginGroup('config')
-        self._config['identifier'] = conf.value('identifier', '')
-        for l in PELVISLANDMARKS:
-            self._config[l] = conf.value(l, l)
-        if conf.value('GUI')=='True':
+        self._config.update(json.loads(string))
+
+        # for config from older versions
+        if self._config['GUI']=='True':
             self._config['GUI'] = True
-        elif conf.value('GUI')=='False':
+        else:
             self._config['GUI'] = False
-        # self._config['GUI'] = conf.value('GUI', True)
-        conf.endGroup()
 
         d = ConfigureDialog()
         d.identifierOccursCount = self._identifierOccursCount
