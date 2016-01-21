@@ -14,7 +14,7 @@ from mapclientplugins.fieldworkpcregpelvis2landmarksstep.pcregviewerwidget impor
 
 from gias2.musculoskeletal import model_alignment as ma
 from gias2.common import math
-from mappluginutils.datatypes import transformations
+from gias2.mappluginutils.datatypes import transformations
 import numpy as np
 
 

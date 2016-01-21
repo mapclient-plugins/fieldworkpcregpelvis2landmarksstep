@@ -30,10 +30,10 @@ from mapclientplugins.fieldworkpcregpelvis2landmarksstep.ui_pcregviewerwidget im
 from traits.api import HasTraits, Instance, on_trait_change, \
     Int, Dict
 
-from mappluginutils.mayaviviewer import MayaviViewerObjectsContainer,\
-                                        MayaviViewerLandmark,\
-                                        MayaviViewerFieldworkModel,\
-                                        colours
+from gias2.mappluginutils.mayaviviewer import MayaviViewerObjectsContainer,\
+                                              MayaviViewerLandmark,\
+                                              MayaviViewerFieldworkModel,\
+                                              colours
 import numpy as np
 import copy
 
