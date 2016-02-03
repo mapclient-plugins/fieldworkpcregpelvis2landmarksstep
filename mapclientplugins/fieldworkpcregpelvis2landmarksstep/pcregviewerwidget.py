@@ -126,6 +126,8 @@ class MayaviPCRegViewerWidget(QDialog):
             self._ui.comboBoxLPSIS.addItem(l)
             self._ui.comboBoxRPSIS.addItem(l)
             self._ui.comboBoxSacral.addItem(l)
+            self._ui.comboBoxLHJC.addItem(l)
+            self._ui.comboBoxRHJC.addItem(l)
 
     def _makeConnections(self):
         self._ui.tableWidget.itemClicked.connect(self._tableItemClicked)
@@ -144,6 +146,8 @@ class MayaviPCRegViewerWidget(QDialog):
         self._ui.comboBoxLPSIS.activated.connect(self._updateConfigLPSIS)
         self._ui.comboBoxRPSIS.activated.connect(self._updateConfigRPSIS)
         self._ui.comboBoxSacral.activated.connect(self._updateConfigSacral)
+        self._ui.comboBoxRHJC.activated.connect(self._updateConfigLHJC)
+        self._ui.comboBoxLHJC.activated.connect(self._updateConfigRHJC)
 
     def _initialiseSettings(self):
         if self._config['LASIS'] in self._landmarkNames:
@@ -170,6 +174,16 @@ class MayaviPCRegViewerWidget(QDialog):
             self._ui.comboBoxSacral.setCurrentIndex(self._landmarkNames.index(self._config['Sacral']))
         else:
             self._ui.comboBoxSacral.setCurrentIndex(0)
+
+        if self._config['LHJC'] in self._landmarkNames:
+            self._ui.comboBoxLHJC.setCurrentIndex(self._landmarkNames.index(self._config['LHJC']))
+        else:
+            self._ui.comboBoxLHJC.setCurrentIndex(0)
+
+        if self._config['RHJC'] in self._landmarkNames:
+            self._ui.comboBoxRHJC.setCurrentIndex(self._landmarkNames.index(self._config['RHJC']))
+        else:
+            self._ui.comboBoxRHJC.setCurrentIndex(0)
 
     def _initialiseObjectTable(self):
         self._ui.tableWidget.setRowCount(self._objects.getNumberOfObjects())
@@ -256,6 +270,12 @@ class MayaviPCRegViewerWidget(QDialog):
     def _updateConfigSacral(self):
         self._config['Sacral'] = self._ui.comboBoxSacral.currentText()
 
+    def _updateConfigLHJC(self):
+        self._config['LHJC'] = self._ui.comboBoxLHJC.currentText()
+
+    def _updateConfigRHJC(self):
+        self._config['RHJC'] = self._ui.comboBoxRHJC.currentText()
+
     def _updateMeshGeometry(self, P):
         meshObj = self._objects.getObject('pelvis mesh')
         meshObj.updateGeometry(P.reshape((3,-1,1)), self._scene)
@@ -275,6 +295,8 @@ class MayaviPCRegViewerWidget(QDialog):
         self._ui.comboBoxLPSIS.setEnabled(False)
         self._ui.comboBoxRPSIS.setEnabled(False)
         self._ui.comboBoxSacral.setEnabled(False)
+        self._ui.comboBoxLHJC.setEnabled(False)
+        self._ui.comboBoxRHJC.setEnabled(False)
         self._ui.regButton.setEnabled(False)
         self._ui.resetButton.setEnabled(False)
         self._ui.acceptButton.setEnabled(False)
@@ -286,6 +308,8 @@ class MayaviPCRegViewerWidget(QDialog):
         self._ui.comboBoxLPSIS.setEnabled(True)
         self._ui.comboBoxRPSIS.setEnabled(True)
         self._ui.comboBoxSacral.setEnabled(True)
+        self._ui.comboBoxLHJC.setEnabled(True)
+        self._ui.comboBoxRHJC.setEnabled(True)
         self._ui.regButton.setEnabled(True)
         self._ui.resetButton.setEnabled(True)
         self._ui.acceptButton.setEnabled(True)

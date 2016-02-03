@@ -146,6 +146,26 @@
                </property>
               </widget>
              </item>
+             <item row="5" column="1">
+              <widget class="QComboBox" name="comboBoxLHJC"/>
+             </item>
+             <item row="6" column="1">
+              <widget class="QComboBox" name="comboBoxRHJC"/>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>LHJC:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>RHJC:</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
            <item>

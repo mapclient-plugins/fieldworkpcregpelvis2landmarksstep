@@ -78,6 +78,8 @@ class ConfigureDialog(QtGui.QDialog):
         config['LPSIS'] = self._ui.lineEditLPSIS.text()
         config['RPSIS'] = self._ui.lineEditRPSIS.text()
         config['Sacral'] = self._ui.lineEditSacral.text()
+        config['LHJC'] = self._ui.lineEditLHJC.text()
+        config['RHJC'] = self._ui.lineEditRHJC.text()
         config['GUI'] = self._ui.checkBoxGUI.isChecked()
         return config
 
@@ -94,5 +96,7 @@ class ConfigureDialog(QtGui.QDialog):
         self._ui.lineEditLPSIS.setText(config['LPSIS'])
         self._ui.lineEditRPSIS.setText(config['RPSIS'])
         self._ui.lineEditSacral.setText(config['Sacral'])
+        self._ui.lineEditLHJC.setText(config['LHJC'])
+        self._ui.lineEditRHJC.setText(config['RHJC'])
         self._ui.checkBoxGUI.setChecked(bool(config['GUI']))
 

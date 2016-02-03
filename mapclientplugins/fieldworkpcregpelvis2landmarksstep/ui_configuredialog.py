@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'configuredialog.ui'
 #
-# Created: Thu Jun 19 13:12:10 2014
-#      by: pyside-uic 0.2.13 running on PySide 1.1.0
+# Created: Sat Jan 30 21:54:02 2016
+#      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -58,17 +58,29 @@ class Ui_Dialog(object):
         self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.lineEditRPSIS)
         self.label_7 = QtGui.QLabel(self.configGroupBox)
         self.label_7.setObjectName("label_7")
-        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_7)
+        self.formLayout.setWidget(8, QtGui.QFormLayout.LabelRole, self.label_7)
         self.checkBoxGUI = QtGui.QCheckBox(self.configGroupBox)
         self.checkBoxGUI.setText("")
         self.checkBoxGUI.setObjectName("checkBoxGUI")
-        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.checkBoxGUI)
+        self.formLayout.setWidget(8, QtGui.QFormLayout.FieldRole, self.checkBoxGUI)
         self.lineEditSacral = QtGui.QLineEdit(self.configGroupBox)
         self.lineEditSacral.setObjectName("lineEditSacral")
         self.formLayout.setWidget(5, QtGui.QFormLayout.FieldRole, self.lineEditSacral)
         self.label = QtGui.QLabel(self.configGroupBox)
         self.label.setObjectName("label")
         self.formLayout.setWidget(5, QtGui.QFormLayout.LabelRole, self.label)
+        self.lineEditLHJC = QtGui.QLineEdit(self.configGroupBox)
+        self.lineEditLHJC.setObjectName("lineEditLHJC")
+        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.lineEditLHJC)
+        self.lineEditRHJC = QtGui.QLineEdit(self.configGroupBox)
+        self.lineEditRHJC.setObjectName("lineEditRHJC")
+        self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.lineEditRHJC)
+        self.label_6 = QtGui.QLabel(self.configGroupBox)
+        self.label_6.setObjectName("label_6")
+        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_6)
+        self.label_8 = QtGui.QLabel(self.configGroupBox)
+        self.label_8.setObjectName("label_8")
+        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_8)
         self.gridLayout.addWidget(self.configGroupBox, 0, 0, 1, 1)
 
         self.retranslateUi(Dialog)
@@ -85,4 +97,6 @@ class Ui_Dialog(object):
         self.label_5.setText(QtGui.QApplication.translate("Dialog", "RPSIS:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("Dialog", "GUI:", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Dialog", "Sacral:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_6.setText(QtGui.QApplication.translate("Dialog", "LHJC:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_8.setText(QtGui.QApplication.translate("Dialog", "RHJC:", None, QtGui.QApplication.UnicodeUTF8))
 

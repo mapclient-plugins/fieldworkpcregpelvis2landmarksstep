@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'pcregviewerwidget.ui'
 #
-# Created: Thu Jun 19 13:12:27 2014
-#      by: pyside-uic 0.2.13 running on PySide 1.1.0
+# Created: Sat Jan 30 21:56:23 2016
+#      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -91,6 +91,18 @@ class Ui_Dialog(object):
         self.label_7 = QtGui.QLabel(self.widget1)
         self.label_7.setObjectName("label_7")
         self.formLayout_2.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_7)
+        self.comboBoxLHJC = QtGui.QComboBox(self.widget1)
+        self.comboBoxLHJC.setObjectName("comboBoxLHJC")
+        self.formLayout_2.setWidget(5, QtGui.QFormLayout.FieldRole, self.comboBoxLHJC)
+        self.comboBoxRHJC = QtGui.QComboBox(self.widget1)
+        self.comboBoxRHJC.setObjectName("comboBoxRHJC")
+        self.formLayout_2.setWidget(6, QtGui.QFormLayout.FieldRole, self.comboBoxRHJC)
+        self.label_8 = QtGui.QLabel(self.widget1)
+        self.label_8.setObjectName("label_8")
+        self.formLayout_2.setWidget(5, QtGui.QFormLayout.LabelRole, self.label_8)
+        self.label_9 = QtGui.QLabel(self.widget1)
+        self.label_9.setObjectName("label_9")
+        self.formLayout_2.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_9)
         self.verticalLayout.addLayout(self.formLayout_2)
         self.gridLayout_2 = QtGui.QGridLayout()
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -211,6 +223,8 @@ class Ui_Dialog(object):
         self.label_5.setText(QtGui.QApplication.translate("Dialog", "LPSIS:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("Dialog", "RPSIS:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("Dialog", "Sacral:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_8.setText(QtGui.QApplication.translate("Dialog", "LHJC:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_9.setText(QtGui.QApplication.translate("Dialog", "RHJC:", None, QtGui.QApplication.UnicodeUTF8))
         self.regButton.setText(QtGui.QApplication.translate("Dialog", "Register", None, QtGui.QApplication.UnicodeUTF8))
         self.resetButton.setText(QtGui.QApplication.translate("Dialog", "Reset", None, QtGui.QApplication.UnicodeUTF8))
         self.acceptButton.setText(QtGui.QApplication.translate("Dialog", "Accept", None, QtGui.QApplication.UnicodeUTF8))

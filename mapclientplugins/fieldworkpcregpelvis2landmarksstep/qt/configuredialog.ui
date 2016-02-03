@@ -83,14 +83,14 @@
       <item row="4" column="1">
        <widget class="QLineEdit" name="lineEditRPSIS"/>
       </item>
-      <item row="6" column="0">
+      <item row="8" column="0">
        <widget class="QLabel" name="label_7">
         <property name="text">
          <string>GUI:</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="8" column="1">
        <widget class="QCheckBox" name="checkBoxGUI">
         <property name="text">
          <string/>
@@ -107,11 +107,64 @@
         </property>
        </widget>
       </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="lineEditLHJC"/>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="lineEditRHJC"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>LHJC:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>RHJC:</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

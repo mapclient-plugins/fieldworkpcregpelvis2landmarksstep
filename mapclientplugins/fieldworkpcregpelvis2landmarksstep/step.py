@@ -18,7 +18,7 @@ from gias2.mappluginutils.datatypes import transformations
 import numpy as np
 
 
-PELVISLANDMARKS = ('LASIS', 'RASIS', 'LPSIS', 'RPSIS', 'Sacral')
+PELVISLANDMARKS = ('LASIS', 'RASIS', 'LPSIS', 'RPSIS', 'Sacral', 'LHJC', 'RHJC')
 
 class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
     '''
@@ -212,5 +212,8 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
+        for l in PELVISLANDMARKS:
+            if l not in self._config:
+                self._config[l] = 'none'
 
 
