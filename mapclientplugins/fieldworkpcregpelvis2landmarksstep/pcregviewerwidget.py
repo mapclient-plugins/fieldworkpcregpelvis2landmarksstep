@@ -37,6 +37,10 @@ from gias2.mappluginutils.mayaviviewer import MayaviViewerObjectsContainer,\
 import numpy as np
 import copy
 
+REGMODES = {'PC': 1,
+            'Linear Scaling': 2,
+            }
+
 class _ExecThread(QThread):
     finalUpdate = Signal(tuple)
     update = Signal(tuple)
@@ -120,6 +124,9 @@ class MayaviPCRegViewerWidget(QDialog):
     def _setupGui(self):
         self._ui.screenshotPixelXLineEdit.setValidator(QIntValidator())
         self._ui.screenshotPixelYLineEdit.setValidator(QIntValidator())
+        self._ui.comboBoxRegMode.addItem('PC')
+        self._ui.comboBoxRegMode.addItem('Linear Scaling')
+        self._ui.spinBoxNPCs.setSingleStep(1)
         for l in self._landmarkNames:
             self._ui.comboBoxLASIS.addItem(l)
             self._ui.comboBoxRASIS.addItem(l)
@@ -149,7 +156,14 @@ class MayaviPCRegViewerWidget(QDialog):
         self._ui.comboBoxRHJC.activated.connect(self._updateConfigLHJC)
         self._ui.comboBoxLHJC.activated.connect(self._updateConfigRHJC)
 
+        self._ui.comboBoxRegMode.activated.connect(self._updateConfigRegMode)
+        self._ui.spinBoxNPCs.valueChanged.connect(self._updateConfigNPCs)
+
     def _initialiseSettings(self):
+
+        self._ui.comboBoxRegMode.setCurrentIndex(self._config['regMode']-1)
+        self._ui.spinBoxNPCs.setValue(self._config['npcs'])
+
         if self._config['LASIS'] in self._landmarkNames:
             self._ui.comboBoxLASIS.setCurrentIndex(self._landmarkNames.index(self._config['LASIS']))
         else:
@@ -276,6 +290,12 @@ class MayaviPCRegViewerWidget(QDialog):
     def _updateConfigRHJC(self):
         self._config['RHJC'] = self._ui.comboBoxRHJC.currentText()
 
+    def _updateConfigRegMode(self):
+        self._config['regMode'] = REGMODES[self._ui.comboBoxRegMode.currentText()]
+
+    def _updateConfigNPCs(self):
+        self._config['npcs'] = self._ui.spinBoxNPCs.value()
+
     def _updateMeshGeometry(self, P):
         meshObj = self._objects.getObject('pelvis mesh')
         meshObj.updateGeometry(P.reshape((3,-1,1)), self._scene)
@@ -290,6 +310,8 @@ class MayaviPCRegViewerWidget(QDialog):
         self._regUnlockUI()
 
     def _regLockUI(self):
+        self._ui.comboBoxRegMode.setEnabled(False)
+        self._ui.spinBoxNPCs.setEnabled(False)
         self._ui.comboBoxLASIS.setEnabled(False)
         self._ui.comboBoxRASIS.setEnabled(False)
         self._ui.comboBoxLPSIS.setEnabled(False)
@@ -303,6 +325,8 @@ class MayaviPCRegViewerWidget(QDialog):
         self._ui.abortButton.setEnabled(False)
 
     def _regUnlockUI(self):
+        self._ui.comboBoxRegMode.setEnabled(True)
+        self._ui.spinBoxNPCs.setEnabled(True)
         self._ui.comboBoxLASIS.setEnabled(True)
         self._ui.comboBoxRASIS.setEnabled(True)
         self._ui.comboBoxLPSIS.setEnabled(True)

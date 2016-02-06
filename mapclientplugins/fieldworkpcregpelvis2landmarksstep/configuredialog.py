@@ -6,6 +6,10 @@ from mapclientplugins.fieldworkpcregpelvis2landmarksstep.ui_configuredialog impo
 INVALID_STYLE_SHEET = 'background-color: rgba(239, 0, 0, 50)'
 DEFAULT_STYLE_SHEET = ''
 
+REGMODES = {'PC': 1,
+            'Linear Scaling': 2,
+            }
+
 class ConfigureDialog(QtGui.QDialog):
     '''
     Configure dialog to present the user with the options to configure this step.
@@ -28,7 +32,13 @@ class ConfigureDialog(QtGui.QDialog):
         # We will use this method to decide whether the identifier is unique.
         self.identifierOccursCount = None
 
+        self._setupDialog()
         self._makeConnections()
+
+    def _setupDialog(self):
+        self._ui.comboBoxRegMode.addItem('PC')
+        self._ui.comboBoxRegMode.addItem('Linear Scaling')
+        self._ui.spinBoxNPCs.setSingleStep(1)
 
     def _makeConnections(self):
         self._ui.lineEdit0.textChanged.connect(self.validate)
@@ -73,6 +83,8 @@ class ConfigureDialog(QtGui.QDialog):
         self._previousIdentifier = self._ui.lineEdit0.text()
         config = {}
         config['identifier'] = self._ui.lineEdit0.text()
+        config['regMode'] = REGMODES[self._ui.comboBoxRegMode.currentText()]
+        config['npcs'] = self._ui.spinBoxNPCs.value()
         config['LASIS'] = self._ui.lineEditLASIS.text()
         config['RASIS'] = self._ui.lineEditRASIS.text()
         config['LPSIS'] = self._ui.lineEditLPSIS.text()
@@ -91,6 +103,8 @@ class ConfigureDialog(QtGui.QDialog):
         '''
         self._previousIdentifier = config['identifier']
         self._ui.lineEdit0.setText(config['identifier'])
+        self._ui.comboBoxRegMode.setCurrentIndex(config['regMode']-1)
+        self._ui.spinBoxNPCs.setValue(config['npcs'])
         self._ui.lineEditLASIS.setText(config['LASIS'])
         self._ui.lineEditRASIS.setText(config['RASIS'])
         self._ui.lineEditLPSIS.setText(config['LPSIS'])

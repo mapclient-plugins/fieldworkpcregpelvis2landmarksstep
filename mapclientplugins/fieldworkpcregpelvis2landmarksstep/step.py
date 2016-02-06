@@ -58,6 +58,8 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
 
         self._config = {}
         self._config['identifier'] = ''
+        self._config['regMode'] = 1
+        self._config['npcs'] = 3
         self._config['GUI'] = True
         for l in PELVISLANDMARKS:
             self._config[l] = 'none'
@@ -117,17 +119,33 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         self._correctLandmarks()
         inputLandmarks = [(l, self._landmarks[self._config[l]]) for l in PELVISLANDMARKS if self._config[l]!='none']
         
-        self._outputModel,\
-        alignmentSSE,\
-        T = ma.alignPelvisLandmarksPC(self._inputModel,
-                                      self._pc,
-                                      inputLandmarks,
-                                      GFParamsCallback=callback,
-                                      mw0=self._pcfitmw0,
-                                      mwn=self._pcfitmwn)
+        if self._config['regMode']==1:
+            self._outputModel,\
+            alignmentSSE,\
+            T = ma.alignModelLandmarksPC(
+                    self._inputModel,
+                    inputLandmarks,
+                    'pelvis',
+                    self._pc,
+                    self._config['npcs'],
+                    GFParamsCallback=callback,
+                    mw0=self._pcfitmw0,
+                    mwn=self._pcfitmwn
+                    )
+            self._transform = transformations.RigidPCModesTransform(T)
+        elif self._config['regMode']:
+            self._outputModel,\
+            alignmentSSE,\
+            T = ma.alignModelLandmarksLinScale(
+                    self._inputModel,
+                    inputLandmarks,
+                    'pelvis',
+                    GFParamsCallback=callback,
+                    )
+            self._transform = transformations.RigidScaleTransformAboutPoint(T, P=self._inputModel.calc_CoM())
 
-        self._rmse = np.sqrt(alignmentSSE[2]/len(inputLandmarks))
-        self._transform = transformations.RigidPCModesTransform(T)
+        self._rmse = np.sqrt(alignmentSSE[-1]/len(inputLandmarks))
+        
         return self._outputModel, self._rmse, T
 
     def setPortData(self, index, dataIn):
@@ -208,12 +226,20 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         elif self._config['GUI']=='False':
             self._config['GUI'] = False
 
+        if 'regMode' not in self._config:
+            self._config['regMode'] = 1
+
+        if 'npcs' not in self._config:
+            self._config['npcs'] = 3
+
+        for l in PELVISLANDMARKS:
+            if l not in self._config:
+                self._config[l] = 'none'
+
         d = ConfigureDialog()
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-        for l in PELVISLANDMARKS:
-            if l not in self._config:
-                self._config[l] = 'none'
+        
 
 
