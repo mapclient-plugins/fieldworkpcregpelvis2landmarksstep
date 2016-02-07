@@ -77,7 +77,8 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         Make sure you call the _doneExecution() method when finished.  This method
         may be connected up to a button in a widget for example.
         '''
-        self._inputModel.set_field_parameters(self._pc.getMean().reshape((3,-1,1)))
+        if self._config['regMode']==1:
+            self._inputModel.set_field_parameters(self._pc.getMean().reshape((3,-1,1)))
         if self._config['GUI']:
             print('launching registration gui')
             # model = copy.deepcopy(self._inputModel)
@@ -117,7 +118,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
             callback = None
 
         self._correctLandmarks()
-        inputLandmarks = [(l, self._landmarks[self._config[l]]) for l in PELVISLANDMARKS if self._config[l]!='none']
+        inputLandmarks = [('pelvis-'+l, self._landmarks[self._config[l]]) for l in PELVISLANDMARKS if self._config[l]!='none']
         
         if self._config['regMode']==1:
             self._outputModel,\
@@ -125,7 +126,6 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
             T = ma.alignModelLandmarksPC(
                     self._inputModel,
                     inputLandmarks,
-                    'pelvis',
                     self._pc,
                     self._config['npcs'],
                     GFParamsCallback=callback,
@@ -139,7 +139,6 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
             T = ma.alignModelLandmarksLinScale(
                     self._inputModel,
                     inputLandmarks,
-                    'pelvis',
                     GFParamsCallback=callback,
                     )
             self._transform = transformations.RigidScaleTransformAboutPoint(T, P=self._inputModel.calc_CoM())
