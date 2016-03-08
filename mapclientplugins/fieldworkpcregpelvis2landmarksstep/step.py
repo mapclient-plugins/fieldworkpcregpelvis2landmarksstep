@@ -101,13 +101,25 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
     def _correctLandmarks(self):
         # move landmarks closer to centre in anterior-posterior direction
         centreAnt = 0.5*(self._landmarks[self._config['LASIS']] + self._landmarks[self._config['RASIS']])
-        centrePos = self._landmarks[self._config['Sacral']]
+        if self._config.get('Sacral')!='none':
+            centrePos = self._landmarks[self._config['Sacral']]
+        elif (self._config.get('LPSIS')!='none') and (self._config.get('RPSIS')!='none'):
+            centrePos = 0.5*(self._landmarks[self._config.get('LPSIS')] +
+                             self._landmarks[self._config.get('RPSIS')]
+                             )
+        else:
+            return
+
         centre = 0.5*(centreAnt + centrePos)
         vPosAnt = centreAnt - centrePos
         vPosAntn = math.norm(vPosAnt)
         self._landmarks[self._config['LASIS']] -= self._landmarkShift*vPosAntn
         self._landmarks[self._config['RASIS']] -= self._landmarkShift*vPosAntn
-        self._landmarks[self._config['Sacral']] += self._landmarkShift*vPosAntn
+        if self._config.get('Sacral')!='none':
+            self._landmarks[self._config['Sacral']] += self._landmarkShift*vPosAntn
+        if (self._config.get('LPSIS')!='none') and (self._config.get('RPSIS')!='none'):
+            self._landmarks[self._config['LPSIS']] += self._landmarkShift*vPosAntn
+            self._landmarks[self._config['RPSIS']] += self._landmarkShift*vPosAntn
 
     def reg(self, callbackSignal=None):
 
