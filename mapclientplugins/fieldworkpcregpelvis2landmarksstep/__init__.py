@@ -20,7 +20,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 __version__ = '0.1.0'
 __author__ = 'Ju Zhang'
 __stepname__ = 'Fieldwork PC-Reg Pelvis 2 Landmarks'
-__location__ = 'https://github.com/mapclient-plugins/fieldworkpcregpelvis2landmarksstep/archive/master.zip'
+__location__ = 'https://github.com/mapclient-plugins/fieldworkpcregpelvis2landmarksstep/archive/v0.1.0.zip'
 
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep import step
 import mapclientplugins.fieldworkpcregpelvis2landmarksstep.resources_rc
