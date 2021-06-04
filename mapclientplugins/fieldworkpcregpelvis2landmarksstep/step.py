@@ -193,7 +193,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         then set:
             self._configured = True
         '''
-        dlg = ConfigureDialog()
+        dlg = ConfigureDialog(self._main_window)
         dlg.identifierOccursCount = self._identifierOccursCount
         dlg.setConfig(self._config)
         dlg.validate()
@@ -247,7 +247,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
             if l not in self._config:
                 self._config[l] = 'none'
 
-        d = ConfigureDialog()
+        d = ConfigureDialog(self._main_window)
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
