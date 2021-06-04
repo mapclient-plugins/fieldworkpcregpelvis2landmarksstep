@@ -12,7 +12,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
-from mayaviscenewidget import MayaviSceneWidget
+from gias2.mappluginutils.mayaviviewer.mayaviscenewidget import MayaviSceneWidget
 
 
 class Ui_Dialog(object):
@@ -27,23 +27,23 @@ class Ui_Dialog(object):
         Dialog.setSizePolicy(sizePolicy)
         self.horizontalLayout_2 = QHBoxLayout(Dialog)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.widget = QWidget(Dialog)
-        self.widget.setObjectName(u"widget")
-        self.widget.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
-        self.widget.setSizePolicy(sizePolicy)
-        self.widget.setMaximumSize(QSize(16777215, 16777215))
-        self.gridLayout = QGridLayout(self.widget)
+        self.widgetMain = QWidget(Dialog)
+        self.widgetMain.setObjectName(u"widgetMain")
+        self.widgetMain.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.widgetMain.sizePolicy().hasHeightForWidth())
+        self.widgetMain.setSizePolicy(sizePolicy)
+        self.widgetMain.setMaximumSize(QSize(16777215, 16777215))
+        self.gridLayout = QGridLayout(self.widgetMain)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.widget1 = QWidget(self.widget)
-        self.widget1.setObjectName(u"widget1")
-        self.widget1.setMaximumSize(QSize(500, 16777215))
-        self.verticalLayout_3 = QVBoxLayout(self.widget1)
+        self.widget = QWidget(self.widgetMain)
+        self.widget.setObjectName(u"widget")
+        self.widget.setMaximumSize(QSize(500, 16777215))
+        self.verticalLayout_3 = QVBoxLayout(self.widget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.tableWidget = QTableWidget(self.widget1)
+        self.tableWidget = QTableWidget(self.widget)
         if (self.tableWidget.columnCount() < 1):
             self.tableWidget.setColumnCount(1)
         __qtablewidgetitem = QTableWidgetItem()
@@ -66,92 +66,92 @@ class Ui_Dialog(object):
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
         self.formLayout_2.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
-        self.label = QLabel(self.widget1)
+        self.label = QLabel(self.widget)
         self.label.setObjectName(u"label")
 
         self.formLayout_2.setWidget(2, QFormLayout.LabelRole, self.label)
 
-        self.comboBoxLASIS = QComboBox(self.widget1)
+        self.comboBoxLASIS = QComboBox(self.widget)
         self.comboBoxLASIS.setObjectName(u"comboBoxLASIS")
 
         self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.comboBoxLASIS)
 
-        self.label_4 = QLabel(self.widget1)
+        self.label_4 = QLabel(self.widget)
         self.label_4.setObjectName(u"label_4")
 
         self.formLayout_2.setWidget(3, QFormLayout.LabelRole, self.label_4)
 
-        self.comboBoxRASIS = QComboBox(self.widget1)
+        self.comboBoxRASIS = QComboBox(self.widget)
         self.comboBoxRASIS.setObjectName(u"comboBoxRASIS")
 
         self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.comboBoxRASIS)
 
-        self.label_5 = QLabel(self.widget1)
+        self.label_5 = QLabel(self.widget)
         self.label_5.setObjectName(u"label_5")
 
         self.formLayout_2.setWidget(4, QFormLayout.LabelRole, self.label_5)
 
-        self.comboBoxLPSIS = QComboBox(self.widget1)
+        self.comboBoxLPSIS = QComboBox(self.widget)
         self.comboBoxLPSIS.setObjectName(u"comboBoxLPSIS")
 
         self.formLayout_2.setWidget(4, QFormLayout.FieldRole, self.comboBoxLPSIS)
 
-        self.label_6 = QLabel(self.widget1)
+        self.label_6 = QLabel(self.widget)
         self.label_6.setObjectName(u"label_6")
 
         self.formLayout_2.setWidget(5, QFormLayout.LabelRole, self.label_6)
 
-        self.comboBoxRPSIS = QComboBox(self.widget1)
+        self.comboBoxRPSIS = QComboBox(self.widget)
         self.comboBoxRPSIS.setObjectName(u"comboBoxRPSIS")
 
         self.formLayout_2.setWidget(5, QFormLayout.FieldRole, self.comboBoxRPSIS)
 
-        self.comboBoxSacral = QComboBox(self.widget1)
+        self.comboBoxSacral = QComboBox(self.widget)
         self.comboBoxSacral.setObjectName(u"comboBoxSacral")
 
         self.formLayout_2.setWidget(6, QFormLayout.FieldRole, self.comboBoxSacral)
 
-        self.label_7 = QLabel(self.widget1)
+        self.label_7 = QLabel(self.widget)
         self.label_7.setObjectName(u"label_7")
 
         self.formLayout_2.setWidget(6, QFormLayout.LabelRole, self.label_7)
 
-        self.comboBoxLHJC = QComboBox(self.widget1)
+        self.comboBoxLHJC = QComboBox(self.widget)
         self.comboBoxLHJC.setObjectName(u"comboBoxLHJC")
 
         self.formLayout_2.setWidget(7, QFormLayout.FieldRole, self.comboBoxLHJC)
 
-        self.comboBoxRHJC = QComboBox(self.widget1)
+        self.comboBoxRHJC = QComboBox(self.widget)
         self.comboBoxRHJC.setObjectName(u"comboBoxRHJC")
 
         self.formLayout_2.setWidget(8, QFormLayout.FieldRole, self.comboBoxRHJC)
 
-        self.label_8 = QLabel(self.widget1)
+        self.label_8 = QLabel(self.widget)
         self.label_8.setObjectName(u"label_8")
 
         self.formLayout_2.setWidget(7, QFormLayout.LabelRole, self.label_8)
 
-        self.label_9 = QLabel(self.widget1)
+        self.label_9 = QLabel(self.widget)
         self.label_9.setObjectName(u"label_9")
 
         self.formLayout_2.setWidget(8, QFormLayout.LabelRole, self.label_9)
 
-        self.label_10 = QLabel(self.widget1)
+        self.label_10 = QLabel(self.widget)
         self.label_10.setObjectName(u"label_10")
 
         self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_10)
 
-        self.label_11 = QLabel(self.widget1)
+        self.label_11 = QLabel(self.widget)
         self.label_11.setObjectName(u"label_11")
 
         self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.label_11)
 
-        self.comboBoxRegMode = QComboBox(self.widget1)
+        self.comboBoxRegMode = QComboBox(self.widget)
         self.comboBoxRegMode.setObjectName(u"comboBoxRegMode")
 
         self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.comboBoxRegMode)
 
-        self.spinBoxNPCs = QSpinBox(self.widget1)
+        self.spinBoxNPCs = QSpinBox(self.widget)
         self.spinBoxNPCs.setObjectName(u"spinBoxNPCs")
 
         self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.spinBoxNPCs)
@@ -161,22 +161,22 @@ class Ui_Dialog(object):
 
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.regButton = QPushButton(self.widget1)
+        self.regButton = QPushButton(self.widget)
         self.regButton.setObjectName(u"regButton")
 
         self.gridLayout_2.addWidget(self.regButton, 0, 0, 1, 1)
 
-        self.resetButton = QPushButton(self.widget1)
+        self.resetButton = QPushButton(self.widget)
         self.resetButton.setObjectName(u"resetButton")
 
         self.gridLayout_2.addWidget(self.resetButton, 0, 1, 1, 1)
 
-        self.acceptButton = QPushButton(self.widget1)
+        self.acceptButton = QPushButton(self.widget)
         self.acceptButton.setObjectName(u"acceptButton")
 
         self.gridLayout_2.addWidget(self.acceptButton, 1, 1, 1, 1)
 
-        self.abortButton = QPushButton(self.widget1)
+        self.abortButton = QPushButton(self.widget)
         self.abortButton.setObjectName(u"abortButton")
 
         self.gridLayout_2.addWidget(self.abortButton, 1, 0, 1, 1)
@@ -188,7 +188,7 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
-        self.groupBox = QGroupBox(self.widget1)
+        self.groupBox = QGroupBox(self.widget)
         self.groupBox.setObjectName(u"groupBox")
         self.formLayout_3 = QFormLayout(self.groupBox)
         self.formLayout_3.setObjectName(u"formLayout_3")
@@ -218,7 +218,7 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addWidget(self.groupBox)
 
-        self.screenshotgroup = QGroupBox(self.widget1)
+        self.screenshotgroup = QGroupBox(self.widget)
         self.screenshotgroup.setObjectName(u"screenshotgroup")
         self.screenshotgroup.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.formLayout = QFormLayout(self.screenshotgroup)
@@ -287,9 +287,9 @@ class Ui_Dialog(object):
         self.verticalLayout_3.addLayout(self.verticalLayout)
 
 
-        self.gridLayout.addWidget(self.widget1, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
 
-        self.MayaviScene = MayaviSceneWidget(self.widget)
+        self.MayaviScene = MayaviSceneWidget(self.widgetMain)
         self.MayaviScene.setObjectName(u"MayaviScene")
         sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         sizePolicy5.setHorizontalStretch(1)
@@ -300,7 +300,7 @@ class Ui_Dialog(object):
         self.gridLayout.addWidget(self.MayaviScene, 0, 1, 1, 1)
 
 
-        self.horizontalLayout_2.addWidget(self.widget)
+        self.horizontalLayout_2.addWidget(self.widgetMain)
 
 
         self.retranslateUi(Dialog)
