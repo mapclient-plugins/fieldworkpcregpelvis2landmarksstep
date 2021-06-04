@@ -1,4 +1,3 @@
-
 '''
 MAP Client Plugin Step
 '''
@@ -17,8 +16,8 @@ from gias2.common import math
 from gias2.mappluginutils.datatypes import transformations
 import numpy as np
 
-
 PELVISLANDMARKS = ('LASIS', 'RASIS', 'LPSIS', 'RPSIS', 'Sacral', 'LHJC', 'RHJC')
+
 
 class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
     '''
@@ -32,7 +31,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(FieldworkPCRegPelvis2LandmarksStep, self).__init__('Fieldwork PC-Reg Pelvis 2 Landmarks', location)
-        self._configured = False # A step cannot be executed until it has been configured.
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._category = 'Registration'
         # Add any other initialisation code here:
         self._icon = QtGui.QImage(':/fieldworkpcregpelvis2landmarksstep/images/fieldworkpelvispcregicon.png')
@@ -77,8 +76,8 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         Make sure you call the _doneExecution() method when finished.  This method
         may be connected up to a button in a widget for example.
         '''
-        if self._config['regMode']==1:
-            self._inputModel.set_field_parameters(self._pc.getMean().reshape((3,-1,1)))
+        if self._config['regMode'] == 1:
+            self._inputModel.set_field_parameters(self._pc.getMean().reshape((3, -1, 1)))
         if self._config['GUI']:
             print('launching registration gui')
             # model = copy.deepcopy(self._inputModel)
@@ -86,7 +85,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
                                                    self._inputModel,
                                                    self._config,
                                                    self.reg,
-                                                  )
+                                                   )
             self._widget._ui.acceptButton.clicked.connect(self._doneExecution)
             self._widget._ui.abortButton.clicked.connect(self._abort)
             self._widget.setModal(True)
@@ -100,26 +99,26 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
 
     def _correctLandmarks(self):
         # move landmarks closer to centre in anterior-posterior direction
-        centreAnt = 0.5*(self._landmarks[self._config['LASIS']] + self._landmarks[self._config['RASIS']])
-        if self._config.get('Sacral')!='none':
+        centreAnt = 0.5 * (self._landmarks[self._config['LASIS']] + self._landmarks[self._config['RASIS']])
+        if self._config.get('Sacral') != 'none':
             centrePos = self._landmarks[self._config['Sacral']]
-        elif (self._config.get('LPSIS')!='none') and (self._config.get('RPSIS')!='none'):
-            centrePos = 0.5*(self._landmarks[self._config.get('LPSIS')] +
-                             self._landmarks[self._config.get('RPSIS')]
-                             )
+        elif (self._config.get('LPSIS') != 'none') and (self._config.get('RPSIS') != 'none'):
+            centrePos = 0.5 * (self._landmarks[self._config.get('LPSIS')] +
+                               self._landmarks[self._config.get('RPSIS')]
+                               )
         else:
             return
 
-        centre = 0.5*(centreAnt + centrePos)
+        centre = 0.5 * (centreAnt + centrePos)
         vPosAnt = centreAnt - centrePos
         vPosAntn = math.norm(vPosAnt)
-        self._landmarks[self._config['LASIS']] -= self._landmarkShift*vPosAntn
-        self._landmarks[self._config['RASIS']] -= self._landmarkShift*vPosAntn
-        if self._config.get('Sacral')!='none':
-            self._landmarks[self._config['Sacral']] += self._landmarkShift*vPosAntn
-        if (self._config.get('LPSIS')!='none') and (self._config.get('RPSIS')!='none'):
-            self._landmarks[self._config['LPSIS']] += self._landmarkShift*vPosAntn
-            self._landmarks[self._config['RPSIS']] += self._landmarkShift*vPosAntn
+        self._landmarks[self._config['LASIS']] -= self._landmarkShift * vPosAntn
+        self._landmarks[self._config['RASIS']] -= self._landmarkShift * vPosAntn
+        if self._config.get('Sacral') != 'none':
+            self._landmarks[self._config['Sacral']] += self._landmarkShift * vPosAntn
+        if (self._config.get('LPSIS') != 'none') and (self._config.get('RPSIS') != 'none'):
+            self._landmarks[self._config['LPSIS']] += self._landmarkShift * vPosAntn
+            self._landmarks[self._config['RPSIS']] += self._landmarkShift * vPosAntn
 
     def reg(self, callbackSignal=None):
 
@@ -130,33 +129,34 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
             callback = None
 
         self._correctLandmarks()
-        inputLandmarks = [('pelvis-'+l, self._landmarks[self._config[l]]) for l in PELVISLANDMARKS if self._config[l]!='none']
-        
-        if self._config['regMode']==1:
-            self._outputModel,\
-            alignmentSSE,\
+        inputLandmarks = [('pelvis-' + l, self._landmarks[self._config[l]]) for l in PELVISLANDMARKS if
+                          self._config[l] != 'none']
+
+        if self._config['regMode'] == 1:
+            self._outputModel, \
+            alignmentSSE, \
             T = ma.alignModelLandmarksPC(
-                    self._inputModel,
-                    inputLandmarks,
-                    self._pc,
-                    self._config['npcs'],
-                    GFParamsCallback=callback,
-                    mw0=self._pcfitmw0,
-                    mwn=self._pcfitmwn
-                    )
+                self._inputModel,
+                inputLandmarks,
+                self._pc,
+                self._config['npcs'],
+                GFParamsCallback=callback,
+                mw0=self._pcfitmw0,
+                mwn=self._pcfitmwn
+            )
             self._transform = transformations.RigidPCModesTransform(T)
         elif self._config['regMode']:
-            self._outputModel,\
-            alignmentSSE,\
+            self._outputModel, \
+            alignmentSSE, \
             T = ma.alignModelLandmarksLinScale(
-                    self._inputModel,
-                    inputLandmarks,
-                    GFParamsCallback=callback,
-                    )
+                self._inputModel,
+                inputLandmarks,
+                GFParamsCallback=callback,
+            )
             self._transform = transformations.RigidScaleTransformAboutPoint(T, P=self._inputModel.calc_CoM())
 
-        self._rmse = np.sqrt(alignmentSSE[-1]/len(inputLandmarks))
-        
+        self._rmse = np.sqrt(alignmentSSE[-1] / len(inputLandmarks))
+
         return self._outputModel, self._rmse, T
 
     def setPortData(self, index, dataIn):
@@ -165,9 +165,9 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         uses port for this step then the index can be ignored.
         '''
-        if index==0:
-            self._landmarks = dataIn # ju#landmarks
-        elif index==1:
+        if index == 0:
+            self._landmarks = dataIn  # ju#landmarks
+        elif index == 1:
             self._pc = dataIn
         else:
             self._inputModel = dataIn
@@ -178,9 +178,9 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         provides port for this step then the index can be ignored.
         '''
-        if index==3:
-            return self._outputModel # ju#landmarks
-        elif index==4:
+        if index == 3:
+            return self._outputModel  # ju#landmarks
+        elif index == 4:
             return self._transform
         else:
             return self._rmse
@@ -198,10 +198,10 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         dlg.setConfig(self._config)
         dlg.validate()
         dlg.setModal(True)
-        
+
         if dlg.exec_():
             self._config = dlg.getConfig()
-        
+
         self._configured = dlg.validate()
         self._configuredObserver()
 
@@ -232,9 +232,9 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         self._config.update(json.loads(string))
 
         # for config from older versions
-        if self._config['GUI']=='True':
+        if self._config['GUI'] == 'True':
             self._config['GUI'] = True
-        elif self._config['GUI']=='False':
+        elif self._config['GUI'] == 'False':
             self._config['GUI'] = False
 
         if 'regMode' not in self._config:
@@ -251,6 +251,3 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-        
-
-

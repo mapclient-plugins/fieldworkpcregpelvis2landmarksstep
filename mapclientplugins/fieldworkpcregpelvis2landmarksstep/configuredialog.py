@@ -1,5 +1,3 @@
-
-
 from PySide2 import QtWidgets
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep.ui_configuredialog import Ui_Dialog
 
@@ -9,6 +7,7 @@ DEFAULT_STYLE_SHEET = ''
 REGMODES = {'PC': 1,
             'Linear Scaling': 2,
             }
+
 
 class ConfigureDialog(QtWidgets.QDialog):
     '''
@@ -20,7 +19,7 @@ class ConfigureDialog(QtWidgets.QDialog):
         Constructor
         '''
         QtWidgets.QDialog.__init__(self, parent)
-        
+
         self._ui = Ui_Dialog()
         self._ui.setupUi(self)
 
@@ -51,8 +50,9 @@ class ConfigureDialog(QtWidgets.QDialog):
         result = QtWidgets.QMessageBox.Yes
         if not self.validate():
             result = QtWidgets.QMessageBox.warning(self, 'Invalid Configuration',
-                'This configuration is invalid.  Unpredictable behaviour may result if you choose \'Yes\', are you sure you want to save this configuration?)',
-                QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No, QtWidgets.QMessageBox.No)
+                                                   'This configuration is invalid.  Unpredictable behaviour may result if you choose \'Yes\', are you sure you want to save this configuration?)',
+                                                   QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                                   QtWidgets.QMessageBox.No)
 
         if result == QtWidgets.QMessageBox.Yes:
             QtWidgets.QDialog.accept(self)
@@ -103,7 +103,7 @@ class ConfigureDialog(QtWidgets.QDialog):
         '''
         self._previousIdentifier = config['identifier']
         self._ui.lineEdit0.setText(config['identifier'])
-        self._ui.comboBoxRegMode.setCurrentIndex(config['regMode']-1)
+        self._ui.comboBoxRegMode.setCurrentIndex(config['regMode'] - 1)
         self._ui.spinBoxNPCs.setValue(config['npcs'])
         self._ui.lineEditLASIS.setText(config['LASIS'])
         self._ui.lineEditRASIS.setText(config['RASIS'])
@@ -113,4 +113,3 @@ class ConfigureDialog(QtWidgets.QDialog):
         self._ui.lineEditLHJC.setText(config['LHJC'])
         self._ui.lineEditRHJC.setText(config['RHJC'])
         self._ui.checkBoxGUI.setChecked(bool(config['GUI']))
-
