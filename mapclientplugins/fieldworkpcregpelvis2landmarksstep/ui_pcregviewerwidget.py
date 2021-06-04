@@ -1,258 +1,340 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qt/pcregviewerwidget.ui'
-#
-# Created: Sat Feb  6 21:39:44 2016
-#      by: pyside-uic 0.2.15 running on PySide 1.2.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'pcregviewerwidget.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide import QtCore, QtGui
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
+from gias2.mappluginutils.mayaviviewer.mayaviscenewidget import MayaviSceneWidget
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        if not Dialog.objectName():
+            Dialog.setObjectName(u"Dialog")
         Dialog.resize(1145, 804)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.setSizePolicy(sizePolicy)
-        self.horizontalLayout_2 = QtGui.QHBoxLayout(Dialog)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.widget = QtGui.QWidget(Dialog)
-        self.widget.setEnabled(True)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
-        self.widget.setSizePolicy(sizePolicy)
-        self.widget.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.widget.setObjectName("widget")
-        self.gridLayout = QtGui.QGridLayout(self.widget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.widget1 = QtGui.QWidget(self.widget)
-        self.widget1.setMaximumSize(QtCore.QSize(500, 16777215))
-        self.widget1.setObjectName("widget1")
-        self.verticalLayout_3 = QtGui.QVBoxLayout(self.widget1)
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.verticalLayout = QtGui.QVBoxLayout()
-        self.verticalLayout.setSizeConstraint(QtGui.QLayout.SetDefaultConstraint)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.tableWidget = QtGui.QTableWidget(self.widget1)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
-        self.tableWidget.setSizePolicy(sizePolicy)
-        self.tableWidget.setMinimumSize(QtCore.QSize(0, 0))
-        self.tableWidget.setMaximumSize(QtCore.QSize(16777215, 150))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(1)
-        self.tableWidget.setRowCount(0)
-        item = QtGui.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, item)
+        self.horizontalLayout_2 = QHBoxLayout(Dialog)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.widgetMain = QWidget(Dialog)
+        self.widgetMain.setObjectName(u"widgetMain")
+        self.widgetMain.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.widgetMain.sizePolicy().hasHeightForWidth())
+        self.widgetMain.setSizePolicy(sizePolicy)
+        self.widgetMain.setMaximumSize(QSize(16777215, 16777215))
+        self.gridLayout = QGridLayout(self.widgetMain)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.widget = QWidget(self.widgetMain)
+        self.widget.setObjectName(u"widget")
+        self.widget.setMaximumSize(QSize(500, 16777215))
+        self.verticalLayout_3 = QVBoxLayout(self.widget)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.tableWidget = QTableWidget(self.widget)
+        if (self.tableWidget.columnCount() < 1):
+            self.tableWidget.setColumnCount(1)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.tableWidget.setObjectName(u"tableWidget")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy1)
+        self.tableWidget.setMinimumSize(QSize(0, 0))
+        self.tableWidget.setMaximumSize(QSize(16777215, 150))
+        self.tableWidget.setSortingEnabled(False)
         self.tableWidget.horizontalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(100)
+
         self.verticalLayout.addWidget(self.tableWidget)
-        self.formLayout_2 = QtGui.QFormLayout()
-        self.formLayout_2.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_2.setObjectName("formLayout_2")
-        self.label = QtGui.QLabel(self.widget1)
-        self.label.setObjectName("label")
-        self.formLayout_2.setWidget(2, QtGui.QFormLayout.LabelRole, self.label)
-        self.comboBoxLASIS = QtGui.QComboBox(self.widget1)
-        self.comboBoxLASIS.setObjectName("comboBoxLASIS")
-        self.formLayout_2.setWidget(2, QtGui.QFormLayout.FieldRole, self.comboBoxLASIS)
-        self.label_4 = QtGui.QLabel(self.widget1)
-        self.label_4.setObjectName("label_4")
-        self.formLayout_2.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_4)
-        self.comboBoxRASIS = QtGui.QComboBox(self.widget1)
-        self.comboBoxRASIS.setObjectName("comboBoxRASIS")
-        self.formLayout_2.setWidget(3, QtGui.QFormLayout.FieldRole, self.comboBoxRASIS)
-        self.label_5 = QtGui.QLabel(self.widget1)
-        self.label_5.setObjectName("label_5")
-        self.formLayout_2.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_5)
-        self.comboBoxLPSIS = QtGui.QComboBox(self.widget1)
-        self.comboBoxLPSIS.setObjectName("comboBoxLPSIS")
-        self.formLayout_2.setWidget(4, QtGui.QFormLayout.FieldRole, self.comboBoxLPSIS)
-        self.label_6 = QtGui.QLabel(self.widget1)
-        self.label_6.setObjectName("label_6")
-        self.formLayout_2.setWidget(5, QtGui.QFormLayout.LabelRole, self.label_6)
-        self.comboBoxRPSIS = QtGui.QComboBox(self.widget1)
-        self.comboBoxRPSIS.setObjectName("comboBoxRPSIS")
-        self.formLayout_2.setWidget(5, QtGui.QFormLayout.FieldRole, self.comboBoxRPSIS)
-        self.comboBoxSacral = QtGui.QComboBox(self.widget1)
-        self.comboBoxSacral.setObjectName("comboBoxSacral")
-        self.formLayout_2.setWidget(6, QtGui.QFormLayout.FieldRole, self.comboBoxSacral)
-        self.label_7 = QtGui.QLabel(self.widget1)
-        self.label_7.setObjectName("label_7")
-        self.formLayout_2.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_7)
-        self.comboBoxLHJC = QtGui.QComboBox(self.widget1)
-        self.comboBoxLHJC.setObjectName("comboBoxLHJC")
-        self.formLayout_2.setWidget(7, QtGui.QFormLayout.FieldRole, self.comboBoxLHJC)
-        self.comboBoxRHJC = QtGui.QComboBox(self.widget1)
-        self.comboBoxRHJC.setObjectName("comboBoxRHJC")
-        self.formLayout_2.setWidget(8, QtGui.QFormLayout.FieldRole, self.comboBoxRHJC)
-        self.label_8 = QtGui.QLabel(self.widget1)
-        self.label_8.setObjectName("label_8")
-        self.formLayout_2.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_8)
-        self.label_9 = QtGui.QLabel(self.widget1)
-        self.label_9.setObjectName("label_9")
-        self.formLayout_2.setWidget(8, QtGui.QFormLayout.LabelRole, self.label_9)
-        self.label_10 = QtGui.QLabel(self.widget1)
-        self.label_10.setObjectName("label_10")
-        self.formLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_10)
-        self.label_11 = QtGui.QLabel(self.widget1)
-        self.label_11.setObjectName("label_11")
-        self.formLayout_2.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_11)
-        self.comboBoxRegMode = QtGui.QComboBox(self.widget1)
-        self.comboBoxRegMode.setObjectName("comboBoxRegMode")
-        self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.comboBoxRegMode)
-        self.spinBoxNPCs = QtGui.QSpinBox(self.widget1)
-        self.spinBoxNPCs.setObjectName("spinBoxNPCs")
-        self.formLayout_2.setWidget(1, QtGui.QFormLayout.FieldRole, self.spinBoxNPCs)
+
+        self.formLayout_2 = QFormLayout()
+        self.formLayout_2.setObjectName(u"formLayout_2")
+        self.formLayout_2.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
+        self.label = QLabel(self.widget)
+        self.label.setObjectName(u"label")
+
+        self.formLayout_2.setWidget(2, QFormLayout.LabelRole, self.label)
+
+        self.comboBoxLASIS = QComboBox(self.widget)
+        self.comboBoxLASIS.setObjectName(u"comboBoxLASIS")
+
+        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.comboBoxLASIS)
+
+        self.label_4 = QLabel(self.widget)
+        self.label_4.setObjectName(u"label_4")
+
+        self.formLayout_2.setWidget(3, QFormLayout.LabelRole, self.label_4)
+
+        self.comboBoxRASIS = QComboBox(self.widget)
+        self.comboBoxRASIS.setObjectName(u"comboBoxRASIS")
+
+        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.comboBoxRASIS)
+
+        self.label_5 = QLabel(self.widget)
+        self.label_5.setObjectName(u"label_5")
+
+        self.formLayout_2.setWidget(4, QFormLayout.LabelRole, self.label_5)
+
+        self.comboBoxLPSIS = QComboBox(self.widget)
+        self.comboBoxLPSIS.setObjectName(u"comboBoxLPSIS")
+
+        self.formLayout_2.setWidget(4, QFormLayout.FieldRole, self.comboBoxLPSIS)
+
+        self.label_6 = QLabel(self.widget)
+        self.label_6.setObjectName(u"label_6")
+
+        self.formLayout_2.setWidget(5, QFormLayout.LabelRole, self.label_6)
+
+        self.comboBoxRPSIS = QComboBox(self.widget)
+        self.comboBoxRPSIS.setObjectName(u"comboBoxRPSIS")
+
+        self.formLayout_2.setWidget(5, QFormLayout.FieldRole, self.comboBoxRPSIS)
+
+        self.comboBoxSacral = QComboBox(self.widget)
+        self.comboBoxSacral.setObjectName(u"comboBoxSacral")
+
+        self.formLayout_2.setWidget(6, QFormLayout.FieldRole, self.comboBoxSacral)
+
+        self.label_7 = QLabel(self.widget)
+        self.label_7.setObjectName(u"label_7")
+
+        self.formLayout_2.setWidget(6, QFormLayout.LabelRole, self.label_7)
+
+        self.comboBoxLHJC = QComboBox(self.widget)
+        self.comboBoxLHJC.setObjectName(u"comboBoxLHJC")
+
+        self.formLayout_2.setWidget(7, QFormLayout.FieldRole, self.comboBoxLHJC)
+
+        self.comboBoxRHJC = QComboBox(self.widget)
+        self.comboBoxRHJC.setObjectName(u"comboBoxRHJC")
+
+        self.formLayout_2.setWidget(8, QFormLayout.FieldRole, self.comboBoxRHJC)
+
+        self.label_8 = QLabel(self.widget)
+        self.label_8.setObjectName(u"label_8")
+
+        self.formLayout_2.setWidget(7, QFormLayout.LabelRole, self.label_8)
+
+        self.label_9 = QLabel(self.widget)
+        self.label_9.setObjectName(u"label_9")
+
+        self.formLayout_2.setWidget(8, QFormLayout.LabelRole, self.label_9)
+
+        self.label_10 = QLabel(self.widget)
+        self.label_10.setObjectName(u"label_10")
+
+        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_10)
+
+        self.label_11 = QLabel(self.widget)
+        self.label_11.setObjectName(u"label_11")
+
+        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.label_11)
+
+        self.comboBoxRegMode = QComboBox(self.widget)
+        self.comboBoxRegMode.setObjectName(u"comboBoxRegMode")
+
+        self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.comboBoxRegMode)
+
+        self.spinBoxNPCs = QSpinBox(self.widget)
+        self.spinBoxNPCs.setObjectName(u"spinBoxNPCs")
+
+        self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.spinBoxNPCs)
+
+
         self.verticalLayout.addLayout(self.formLayout_2)
-        self.gridLayout_2 = QtGui.QGridLayout()
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.regButton = QtGui.QPushButton(self.widget1)
-        self.regButton.setObjectName("regButton")
+
+        self.gridLayout_2 = QGridLayout()
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.regButton = QPushButton(self.widget)
+        self.regButton.setObjectName(u"regButton")
+
         self.gridLayout_2.addWidget(self.regButton, 0, 0, 1, 1)
-        self.resetButton = QtGui.QPushButton(self.widget1)
-        self.resetButton.setObjectName("resetButton")
+
+        self.resetButton = QPushButton(self.widget)
+        self.resetButton.setObjectName(u"resetButton")
+
         self.gridLayout_2.addWidget(self.resetButton, 0, 1, 1, 1)
-        self.acceptButton = QtGui.QPushButton(self.widget1)
-        self.acceptButton.setObjectName("acceptButton")
+
+        self.acceptButton = QPushButton(self.widget)
+        self.acceptButton.setObjectName(u"acceptButton")
+
         self.gridLayout_2.addWidget(self.acceptButton, 1, 1, 1, 1)
-        self.abortButton = QtGui.QPushButton(self.widget1)
-        self.abortButton.setObjectName("abortButton")
+
+        self.abortButton = QPushButton(self.widget)
+        self.abortButton.setObjectName(u"abortButton")
+
         self.gridLayout_2.addWidget(self.abortButton, 1, 0, 1, 1)
+
+
         self.verticalLayout.addLayout(self.gridLayout_2)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
-        self.groupBox = QtGui.QGroupBox(self.widget1)
-        self.groupBox.setObjectName("groupBox")
-        self.formLayout_3 = QtGui.QFormLayout(self.groupBox)
-        self.formLayout_3.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout_3.setObjectName("formLayout_3")
-        self.label_2 = QtGui.QLabel(self.groupBox)
-        self.label_2.setObjectName("label_2")
-        self.formLayout_3.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_2)
-        self.label_3 = QtGui.QLabel(self.groupBox)
-        self.label_3.setObjectName("label_3")
-        self.formLayout_3.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_3)
-        self.lineEditTransformation = QtGui.QLineEdit(self.groupBox)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
+        self.groupBox = QGroupBox(self.widget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.formLayout_3 = QFormLayout(self.groupBox)
+        self.formLayout_3.setObjectName(u"formLayout_3")
+        self.formLayout_3.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
+        self.label_2 = QLabel(self.groupBox)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.label_2)
+
+        self.label_3 = QLabel(self.groupBox)
+        self.label_3.setObjectName(u"label_3")
+
+        self.formLayout_3.setWidget(1, QFormLayout.LabelRole, self.label_3)
+
+        self.lineEditTransformation = QLineEdit(self.groupBox)
+        self.lineEditTransformation.setObjectName(u"lineEditTransformation")
         self.lineEditTransformation.setReadOnly(True)
-        self.lineEditTransformation.setObjectName("lineEditTransformation")
-        self.formLayout_3.setWidget(1, QtGui.QFormLayout.FieldRole, self.lineEditTransformation)
-        self.lineEditRMSE = QtGui.QLineEdit(self.groupBox)
+
+        self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.lineEditTransformation)
+
+        self.lineEditRMSE = QLineEdit(self.groupBox)
+        self.lineEditRMSE.setObjectName(u"lineEditRMSE")
         self.lineEditRMSE.setReadOnly(True)
-        self.lineEditRMSE.setObjectName("lineEditRMSE")
-        self.formLayout_3.setWidget(0, QtGui.QFormLayout.FieldRole, self.lineEditRMSE)
+
+        self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.lineEditRMSE)
+
+
         self.verticalLayout.addWidget(self.groupBox)
-        self.screenshotgroup = QtGui.QGroupBox(self.widget1)
-        self.screenshotgroup.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.screenshotgroup.setObjectName("screenshotgroup")
-        self.formLayout = QtGui.QFormLayout(self.screenshotgroup)
-        self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout.setObjectName("formLayout")
-        self.pixelsXLabel = QtGui.QLabel(self.screenshotgroup)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pixelsXLabel.sizePolicy().hasHeightForWidth())
-        self.pixelsXLabel.setSizePolicy(sizePolicy)
-        self.pixelsXLabel.setObjectName("pixelsXLabel")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.pixelsXLabel)
-        self.screenshotPixelXLineEdit = QtGui.QLineEdit(self.screenshotgroup)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.screenshotPixelXLineEdit.sizePolicy().hasHeightForWidth())
-        self.screenshotPixelXLineEdit.setSizePolicy(sizePolicy)
-        self.screenshotPixelXLineEdit.setObjectName("screenshotPixelXLineEdit")
-        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.screenshotPixelXLineEdit)
-        self.pixelsYLabel = QtGui.QLabel(self.screenshotgroup)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pixelsYLabel.sizePolicy().hasHeightForWidth())
-        self.pixelsYLabel.setSizePolicy(sizePolicy)
-        self.pixelsYLabel.setObjectName("pixelsYLabel")
-        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.pixelsYLabel)
-        self.screenshotPixelYLineEdit = QtGui.QLineEdit(self.screenshotgroup)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.screenshotPixelYLineEdit.sizePolicy().hasHeightForWidth())
-        self.screenshotPixelYLineEdit.setSizePolicy(sizePolicy)
-        self.screenshotPixelYLineEdit.setObjectName("screenshotPixelYLineEdit")
-        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.screenshotPixelYLineEdit)
-        self.screenshotFilenameLabel = QtGui.QLabel(self.screenshotgroup)
-        self.screenshotFilenameLabel.setObjectName("screenshotFilenameLabel")
-        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.screenshotFilenameLabel)
-        self.screenshotFilenameLineEdit = QtGui.QLineEdit(self.screenshotgroup)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.screenshotFilenameLineEdit.sizePolicy().hasHeightForWidth())
-        self.screenshotFilenameLineEdit.setSizePolicy(sizePolicy)
-        self.screenshotFilenameLineEdit.setObjectName("screenshotFilenameLineEdit")
-        self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.screenshotFilenameLineEdit)
-        self.screenshotSaveButton = QtGui.QPushButton(self.screenshotgroup)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.screenshotSaveButton.sizePolicy().hasHeightForWidth())
-        self.screenshotSaveButton.setSizePolicy(sizePolicy)
-        self.screenshotSaveButton.setObjectName("screenshotSaveButton")
-        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.screenshotSaveButton)
+
+        self.screenshotgroup = QGroupBox(self.widget)
+        self.screenshotgroup.setObjectName(u"screenshotgroup")
+        self.screenshotgroup.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.formLayout = QFormLayout(self.screenshotgroup)
+        self.formLayout.setObjectName(u"formLayout")
+        self.formLayout.setFieldGrowthPolicy(QFormLayout.AllNonFixedFieldsGrow)
+        self.pixelsXLabel = QLabel(self.screenshotgroup)
+        self.pixelsXLabel.setObjectName(u"pixelsXLabel")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.pixelsXLabel.sizePolicy().hasHeightForWidth())
+        self.pixelsXLabel.setSizePolicy(sizePolicy2)
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.pixelsXLabel)
+
+        self.screenshotPixelXLineEdit = QLineEdit(self.screenshotgroup)
+        self.screenshotPixelXLineEdit.setObjectName(u"screenshotPixelXLineEdit")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.screenshotPixelXLineEdit.sizePolicy().hasHeightForWidth())
+        self.screenshotPixelXLineEdit.setSizePolicy(sizePolicy3)
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.screenshotPixelXLineEdit)
+
+        self.pixelsYLabel = QLabel(self.screenshotgroup)
+        self.pixelsYLabel.setObjectName(u"pixelsYLabel")
+        sizePolicy2.setHeightForWidth(self.pixelsYLabel.sizePolicy().hasHeightForWidth())
+        self.pixelsYLabel.setSizePolicy(sizePolicy2)
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.pixelsYLabel)
+
+        self.screenshotPixelYLineEdit = QLineEdit(self.screenshotgroup)
+        self.screenshotPixelYLineEdit.setObjectName(u"screenshotPixelYLineEdit")
+        sizePolicy3.setHeightForWidth(self.screenshotPixelYLineEdit.sizePolicy().hasHeightForWidth())
+        self.screenshotPixelYLineEdit.setSizePolicy(sizePolicy3)
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.screenshotPixelYLineEdit)
+
+        self.screenshotFilenameLabel = QLabel(self.screenshotgroup)
+        self.screenshotFilenameLabel.setObjectName(u"screenshotFilenameLabel")
+
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.screenshotFilenameLabel)
+
+        self.screenshotFilenameLineEdit = QLineEdit(self.screenshotgroup)
+        self.screenshotFilenameLineEdit.setObjectName(u"screenshotFilenameLineEdit")
+        sizePolicy3.setHeightForWidth(self.screenshotFilenameLineEdit.sizePolicy().hasHeightForWidth())
+        self.screenshotFilenameLineEdit.setSizePolicy(sizePolicy3)
+
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.screenshotFilenameLineEdit)
+
+        self.screenshotSaveButton = QPushButton(self.screenshotgroup)
+        self.screenshotSaveButton.setObjectName(u"screenshotSaveButton")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.screenshotSaveButton.sizePolicy().hasHeightForWidth())
+        self.screenshotSaveButton.setSizePolicy(sizePolicy4)
+
+        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.screenshotSaveButton)
+
+
         self.verticalLayout.addWidget(self.screenshotgroup)
+
+
         self.verticalLayout_3.addLayout(self.verticalLayout)
-        self.gridLayout.addWidget(self.widget1, 0, 0, 1, 1)
-        self.MayaviScene = MayaviSceneWidget(self.widget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.MayaviScene.sizePolicy().hasHeightForWidth())
-        self.MayaviScene.setSizePolicy(sizePolicy)
-        self.MayaviScene.setObjectName("MayaviScene")
+
+
+        self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
+
+        self.MayaviScene = MayaviSceneWidget(self.widgetMain)
+        self.MayaviScene.setObjectName(u"MayaviScene")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy5.setHorizontalStretch(1)
+        sizePolicy5.setVerticalStretch(1)
+        sizePolicy5.setHeightForWidth(self.MayaviScene.sizePolicy().hasHeightForWidth())
+        self.MayaviScene.setSizePolicy(sizePolicy5)
+
         self.gridLayout.addWidget(self.MayaviScene, 0, 1, 1, 1)
-        self.horizontalLayout_2.addWidget(self.widget)
+
+
+        self.horizontalLayout_2.addWidget(self.widgetMain)
+
 
         self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        QMetaObject.connectSlotsByName(Dialog)
+    # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Pelvis Mesh PCA Landmark Registration", None, QtGui.QApplication.UnicodeUTF8))
-        self.tableWidget.setSortingEnabled(False)
-        self.tableWidget.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("Dialog", "Visible", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("Dialog", "LASIS:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Dialog", "RASIS:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_5.setText(QtGui.QApplication.translate("Dialog", "LPSIS:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_6.setText(QtGui.QApplication.translate("Dialog", "RPSIS:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_7.setText(QtGui.QApplication.translate("Dialog", "Sacral:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_8.setText(QtGui.QApplication.translate("Dialog", "LHJC:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_9.setText(QtGui.QApplication.translate("Dialog", "RHJC:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_10.setText(QtGui.QApplication.translate("Dialog", "Registration Mode:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_11.setText(QtGui.QApplication.translate("Dialog", "PCs to Fit:", None, QtGui.QApplication.UnicodeUTF8))
-        self.regButton.setText(QtGui.QApplication.translate("Dialog", "Register", None, QtGui.QApplication.UnicodeUTF8))
-        self.resetButton.setText(QtGui.QApplication.translate("Dialog", "Reset", None, QtGui.QApplication.UnicodeUTF8))
-        self.acceptButton.setText(QtGui.QApplication.translate("Dialog", "Accept", None, QtGui.QApplication.UnicodeUTF8))
-        self.abortButton.setText(QtGui.QApplication.translate("Dialog", "Abort", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setTitle(QtGui.QApplication.translate("Dialog", "Registration Results", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("Dialog", "RMSE:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("Dialog", "Transformation:", None, QtGui.QApplication.UnicodeUTF8))
-        self.screenshotgroup.setTitle(QtGui.QApplication.translate("Dialog", "Screenshot", None, QtGui.QApplication.UnicodeUTF8))
-        self.pixelsXLabel.setText(QtGui.QApplication.translate("Dialog", "Pixels X:", None, QtGui.QApplication.UnicodeUTF8))
-        self.screenshotPixelXLineEdit.setText(QtGui.QApplication.translate("Dialog", "800", None, QtGui.QApplication.UnicodeUTF8))
-        self.pixelsYLabel.setText(QtGui.QApplication.translate("Dialog", "Pixels Y:", None, QtGui.QApplication.UnicodeUTF8))
-        self.screenshotPixelYLineEdit.setText(QtGui.QApplication.translate("Dialog", "600", None, QtGui.QApplication.UnicodeUTF8))
-        self.screenshotFilenameLabel.setText(QtGui.QApplication.translate("Dialog", "Filename:", None, QtGui.QApplication.UnicodeUTF8))
-        self.screenshotFilenameLineEdit.setText(QtGui.QApplication.translate("Dialog", "screenshot.png", None, QtGui.QApplication.UnicodeUTF8))
-        self.screenshotSaveButton.setText(QtGui.QApplication.translate("Dialog", "Save Screenshot", None, QtGui.QApplication.UnicodeUTF8))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Pelvis Mesh PCA Landmark Registration", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog", u"Visible", None));
+        self.label.setText(QCoreApplication.translate("Dialog", u"LASIS:", None))
+        self.label_4.setText(QCoreApplication.translate("Dialog", u"RASIS:", None))
+        self.label_5.setText(QCoreApplication.translate("Dialog", u"LPSIS:", None))
+        self.label_6.setText(QCoreApplication.translate("Dialog", u"RPSIS:", None))
+        self.label_7.setText(QCoreApplication.translate("Dialog", u"Sacral:", None))
+        self.label_8.setText(QCoreApplication.translate("Dialog", u"LHJC:", None))
+        self.label_9.setText(QCoreApplication.translate("Dialog", u"RHJC:", None))
+        self.label_10.setText(QCoreApplication.translate("Dialog", u"Registration Mode:", None))
+        self.label_11.setText(QCoreApplication.translate("Dialog", u"PCs to Fit:", None))
+        self.regButton.setText(QCoreApplication.translate("Dialog", u"Register", None))
+        self.resetButton.setText(QCoreApplication.translate("Dialog", u"Reset", None))
+        self.acceptButton.setText(QCoreApplication.translate("Dialog", u"Accept", None))
+        self.abortButton.setText(QCoreApplication.translate("Dialog", u"Abort", None))
+        self.groupBox.setTitle(QCoreApplication.translate("Dialog", u"Registration Results", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"RMSE:", None))
+        self.label_3.setText(QCoreApplication.translate("Dialog", u"Transformation:", None))
+        self.screenshotgroup.setTitle(QCoreApplication.translate("Dialog", u"Screenshot", None))
+        self.pixelsXLabel.setText(QCoreApplication.translate("Dialog", u"Pixels X:", None))
+        self.screenshotPixelXLineEdit.setText(QCoreApplication.translate("Dialog", u"800", None))
+        self.pixelsYLabel.setText(QCoreApplication.translate("Dialog", u"Pixels Y:", None))
+        self.screenshotPixelYLineEdit.setText(QCoreApplication.translate("Dialog", u"600", None))
+        self.screenshotFilenameLabel.setText(QCoreApplication.translate("Dialog", u"Filename:", None))
+        self.screenshotFilenameLineEdit.setText(QCoreApplication.translate("Dialog", u"screenshot.png", None))
+        self.screenshotSaveButton.setText(QCoreApplication.translate("Dialog", u"Save Screenshot", None))
+    # retranslateUi
 
-from gias2.mappluginutils.mayaviviewer.mayaviscenewidget import MayaviSceneWidget
