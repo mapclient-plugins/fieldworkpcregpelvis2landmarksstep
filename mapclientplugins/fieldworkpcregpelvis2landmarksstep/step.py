@@ -11,9 +11,10 @@ from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep.configuredialog import ConfigureDialog
 from mapclientplugins.fieldworkpcregpelvis2landmarksstep.pcregviewerwidget import MayaviPCRegViewerWidget
 
-from gias2.musculoskeletal import model_alignment as ma
-from gias2.common import math
-from gias2.mappluginutils.datatypes import transformations
+from gias3.musculoskeletal import model_alignment as ma
+from gias3.common import math
+from gias3.mapclientpluginutilities.datatypes import transformations
+
 import numpy as np
 
 PELVISLANDMARKS = ('LASIS', 'RASIS', 'LPSIS', 'RPSIS', 'Sacral', 'LHJC', 'RHJC')
@@ -140,7 +141,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
                 inputLandmarks,
                 self._pc,
                 self._config['npcs'],
-                GFParamsCallback=callback,
+                gf_params_callback=callback,
                 mw0=self._pcfitmw0,
                 mwn=self._pcfitmwn
             )
@@ -151,7 +152,7 @@ class FieldworkPCRegPelvis2LandmarksStep(WorkflowStepMountPoint):
             T = ma.alignModelLandmarksLinScale(
                 self._inputModel,
                 inputLandmarks,
-                GFParamsCallback=callback,
+                gf_params_callback=callback,
             )
             self._transform = transformations.RigidScaleTransformAboutPoint(T, P=self._inputModel.calc_CoM())
 
